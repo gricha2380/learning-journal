@@ -1,0 +1,3 @@
+Introduction to Handebars. I've used larger libraries that include their own templating libraries, including Angular and React. The syntax and concepts of Handlebars is fairly similar so I didn't have any difficulty.
+
+What was more of a challenge for me was dealing with prototypes and constructors. I need to spend time outside of class praticing with the concepts to make sure I don't fall behind. I've already set aside time this weekend, and I'll commit to doing so for as long as it takes to get over the hump.
