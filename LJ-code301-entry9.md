@@ -1,0 +1,3 @@
+December 16, 2017
+
+Today I had the oppertunity to explore some of the varitiy amongst publicly avaiable APIs. I found an interesting mix of situations. Large tech companies tend to offer robust, well documented APIs with easy, helpful examples. Meanwhile, some government APIs I attempted to explore, like the US Department of Labor, were very cumbersome and cryptic, and their examples raised more questions than they answered. Also, certain industires seem to refer to their APIs as being public, but in actually hide them behind formal partner programs with low approval rates and limited endpoints. And, specific to the entertainment industry, the best or sometimes the only source of data is through unoffocial fan-based sources.
