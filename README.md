@@ -9,6 +9,8 @@ In 2018 I will gain the skills of a full stack web developer. This will be an in
     * [ES6 crash course](https://www.udemy.com/es6-ecmascript-6-for-beginners/learn/v4/overview)
     * [JS Cheet Sheet](https://github.com/mbeaudru/modern-js-cheatsheet?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more)
     * [Codewars](https://www.codewars.com)
+    * [Arrow Functions pt 1](https://codeburst.io/javascript-arrow-functions-for-beginners-926947fc0cdc)
+    * [Arrow Functions pt 2](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
 - [ ] **Learn Fundimentals of Software Testing**
     * Why: To scale my own software and to find my role in the industry
@@ -76,6 +78,8 @@ In 2018 I will gain the skills of a full stack web developer. This will be an in
     * [Udemy Learn React + Flux in 4 projects](https://www.udemy.com/home/my-courses/search/?q=react)
     * [Firebase + React](https://css-tricks.com/intro-firebase-react)
     * [Firebase + React](https://www.codementor.io/yurio/all-you-need-is-react-firebase-4v7g9p4kf)
+    * [Youtube: Firebase + React](https://www.youtube.com/watch?v=mwNATxfUsgI)
+    * [Youtube: Firebase authentication](https://www.youtube.com/watch?v=XMuoDQy61ys)
     
 - [ ] **Regular Expressions**
     * Why: Regex is useful in front end, back end and testing. And it'll be a fun game... 👾
