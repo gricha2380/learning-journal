@@ -7,7 +7,8 @@ In 2018 I will gain the skills of a full stack web developer. This will be an in
     * [Eloquent Javascript](http://eloquentjavascript.net)
     * [Javascript Koans](https://github.com/mrdavidlaing/javascript-koans)
     * [ES6 crash course](https://www.udemy.com/es6-ecmascript-6-for-beginners/learn/v4/overview)
-    * [JS Cheet Sheet](https://github.com/mbeaudru/modern-js-cheatsheet?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more)
+    * [JS Cheet Sheet & Roadmap](https://github.com/mbeaudru/modern-js-cheatsheet?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more)
+    * [You don't know JS ebook](https://github.com/getify/You-Dont-Know-JS)
     * [Codewars](https://www.codewars.com)
     * [Arrow Functions pt 1](https://codeburst.io/javascript-arrow-functions-for-beginners-926947fc0cdc)
     * [Arrow Functions pt 2](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
@@ -25,7 +26,7 @@ In 2018 I will gain the skills of a full stack web developer. This will be an in
     * Treehouse has a bunch of courses, and the key is practice.
         * https://github.com/hdngr/treehouse-gulp-basics.git
         * https://blog.udemy.com/git-tutorial-a-comprehensive-guide
-    * [interactive git branching](https://learngitbranching.js.org/)
+    * [Interactive git branching](https://learngitbranching.js.org/)
 
 - [ ] **Learn Bash command line**
     * Why: Interface for nearly all dev tooling
@@ -70,7 +71,7 @@ In 2018 I will gain the skills of a full stack web developer. This will be an in
     * [CSS Tricks](https://css-tricks.com/intro-firebase-react)
     * [Youtube Channel](https://www.youtube.com/channel/UCP4bf6IHJJQehibu6ai__cg)
     * [Youtube build an app](https://www.youtube.com/watch?v=VTkM5BbnslU)
-    * artifacts: [My blog](http://gregorrichardson.com/blog/building-a-node-js-api-with-firebase-integration/)
+    * Artifacts: [My blog](http://gregorrichardson.com/blog/building-a-node-js-api-with-firebase-integration/)
 
 - [ ] **React.js and Flux**
     * Why: It's the most prominent front end framework for modern development
