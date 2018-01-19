@@ -19,6 +19,7 @@ In 2018 I will gain the skills of a full stack web developer. This will be an in
     * [JS testing with Mocha & Chai](https://teamtreehouse.com/library/javascript-unit-testing)
     * learn about internal chettah
     * [enzyme: React testing utility](http://airbnb.io/enzyme/)
+   
 
 ## Supporting Concepts
 - [ ] **Learn advance git functionality**
@@ -63,7 +64,7 @@ In 2018 I will gain the skills of a full stack web developer. This will be an in
     * Why: Socrata focus
     * [Learn Ruby](https://teamtreehouse.com/library/topic:ruby)
     * [Ruby basics](https://teamtreehouse.com/library/practice-ruby-on-rails-basics/upcoming)
-    * [Ruby Koans](https://github.com/mrdavidlaing/javascript-koans)
+    * [Ruby Koans](http://rubykoans.com/)
     * [Rails for Zombies](http://railsforzombies.org/levels/1)
 
 - [x] **Learn Firebase**
