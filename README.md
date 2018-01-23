@@ -99,3 +99,8 @@ In 2018 I will gain the skills of a full stack web developer. This will be an in
     * Why: Every business and project can benefit from it's tools
     * https://teamtreehouse.com/library/how-to-use-google-analytics
     * Soon: Youtube videos
+
+- [ ] **Bonus Javascript Polish**
+    * Why: These skills are nice to have
+    * [Developing NPM packages](http://go.auth0.com/Q0mW08X0V62q00g4Z00Ibo0)
+    * [Deploying JS apps](http://go.auth0.com/s05m0q408XgH0V00bo20Z0W)
