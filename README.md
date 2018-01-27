@@ -104,3 +104,4 @@ In 2018 I will gain the skills of a full stack web developer. This will be an in
     * Why: These skills are nice to have
     * [Developing NPM packages](http://go.auth0.com/Q0mW08X0V62q00g4Z00Ibo0)
     * [Deploying JS apps](http://go.auth0.com/s05m0q408XgH0V00bo20Z0W)
+    * [Convert blog to Jeckell](https://dziganto.github.io/data%20science/linear%20regression/machine%20learning/python/Linear-Regression-101-Metrics/)
