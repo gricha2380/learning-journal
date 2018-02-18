@@ -19,6 +19,7 @@ In 2018 I will gain the skills of a full stack web developer. This will be an in
     * [JS testing with Mocha & Chai](https://teamtreehouse.com/library/javascript-unit-testing)
     * learn about internal chettah
     * [enzyme: React testing utility](http://airbnb.io/enzyme/)
+    * [Capybara: Ruby web acceptance framework](http://teamcapybara.github.io/capybara)
    
 
 ## Supporting Concepts
