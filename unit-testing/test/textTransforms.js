@@ -4,10 +4,10 @@ expect(true).to.be.true;
 
 
 // let titleCase = (title) => {title}
-function titleCase(title) {
+let titleCase = (title) => {
     let words = title.split(' ');
     // console.log('current split',words)
-    let titleCaseWords = words.map(function(word){
+    let titleCaseWords = words.map((word)=>{
         return word[0].toUpperCase() + word.substring(1);
     })
     // console.log('current split after',titleCaseWords)
