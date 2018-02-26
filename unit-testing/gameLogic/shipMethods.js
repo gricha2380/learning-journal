@@ -22,5 +22,10 @@ let shipDamage = (ship, coordinateGuess) => {
     // }
     // console.log('ship damage report',ship.damage)
 }
+
+let attackOpponent = (player, coordinateGuess) => (checkforShip(player, coordinateGuess)) ? shipDamage(player.ships[0], coordinateGuess) : null;
+
+
 module.exports.checkforShip = checkforShip;
 module.exports.shipDamage = shipDamage;
+module.exports.attackOpponent = attackOpponent;

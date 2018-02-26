@@ -65,3 +65,22 @@ describe('ship damage',()=>{
         expect(ship.damage[0]).to.deep.equal([0,0])
     })
 })
+
+//fire at opponent
+describe('fire at opponent',()=>{
+    let attackOpponent = require('../gameLogic/shipMethods').attackOpponent;
+    it('see if damage is given',()=>{
+        player = {
+            "ships" : [
+                {
+                    "locations": [[0,1]],
+                    "damage":[]
+                }
+            ]
+        }
+        
+        attackOpponent(player,[0,1])
+        expect(player.ships[0].damage).to.not.be.empty;
+        expect(player.ships[0].damage[0]).to.deep.equal([0,1])
+    })
+})
