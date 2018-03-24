@@ -7,7 +7,8 @@ let checkforShip = (player,coordinateGuess) => {
         })[0]
 
         if(shipPresent) {
-            return true;
+            // return true;
+            return ship
         }
     }
     return false;
@@ -23,7 +24,13 @@ let shipDamage = (ship, coordinateGuess) => {
     // console.log('ship damage report',ship.damage)
 }
 
-let attackOpponent = (player, coordinateGuess) => (checkforShip(player, coordinateGuess)) ? shipDamage(player.ships[0], coordinateGuess) : null;
+let attackOpponent = (player, coordinateGuess) => {
+    let shipLocation = checkforShip(player, coordinateGuess);
+    if (shipLocation) {
+        shipDamage(shipLocation, coordinateGuess)
+    }
+}
+// let attackOpponent = (player, coordinateGuess) => (checkforShip(player, coordinateGuess)) ? shipDamage(player.ships[0], coordinateGuess) : null;
 
 
 module.exports.checkforShip = checkforShip;

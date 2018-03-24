@@ -22,8 +22,10 @@ describe('check for ship',()=>{
                 }
             ]
         }
-        expect(checkforShip(player,[0,1])).to.be.true;
-        expect(checkforShip(player,[0,0])).to.be.true;
+        // expect(checkforShip(player,[0,1])).to.be.true;
+        expect(checkforShip(player,[0,1])).to.deep.equal(player.ships[0])
+        expect(checkforShip(player,[0,0])).to.deep.equal(player.ships[0])
+        // expect(checkforShip(player,[0,0])).to.be.true;
         expect(checkforShip(player,[3,3])).to.be.false;
     })
 
@@ -41,12 +43,12 @@ describe('check for ship',()=>{
                 }
             ]
         }
-        expect(checkforShip(player,[0,1])).to.be.true;
-        expect(checkforShip(player,[0,0])).to.be.true;
-        expect(checkforShip(player,[1,0])).to.be.true;
-        expect(checkforShip(player,[1,1])).to.be.true;
+        expect(checkforShip(player,[0,1])).to.deep.equal(player.ships[0])
+        expect(checkforShip(player,[0,0])).to.deep.equal(player.ships[0])
+        expect(checkforShip(player,[1,0])).to.deep.equal(player.ships[1])
+        expect(checkforShip(player,[1,1])).to.deep.equal(player.ships[1])
         expect(checkforShip(player,[2,4])).to.be.false;
-        expect(checkforShip(player,[2,3])).to.be.true;
+        expect(checkforShip(player,[2,3])).to.deep.equal(player.ships[2])
         expect(checkforShip(player,[4,2])).to.be.false;
     })
 })
@@ -82,5 +84,19 @@ describe('fire at opponent',()=>{
         attackOpponent(player,[0,1])
         expect(player.ships[0].damage).to.not.be.empty;
         expect(player.ships[0].damage[0]).to.deep.equal([0,1])
+    })
+    
+    it('should not record damage if no ship at coordinates',()=>{
+        player = {
+            "ships" : [
+                {
+                    "locations": [[0,1]],
+                    "damage":[]
+                }
+            ]
+        }
+        
+        attackOpponent(player,[9,9])
+        expect(player.ships[0].damage).to.be.empty;
     })
 })
