@@ -20,6 +20,14 @@ describe('check for ship',()=>{
         }
     })
 
+    after(()=>{
+        // console.log('Entire test suite completed')
+    })
+
+    afterEach(()=>{
+        // console.log('one unit test completed')
+    })
+
     it('should show no ship at a given coordinate for specified player',()=>{
         expect(checkforShip(player,[3,3])).to.be.false;
     })

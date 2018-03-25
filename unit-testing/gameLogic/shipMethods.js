@@ -16,12 +16,6 @@ let checkforShip = (player,coordinateGuess) => {
 
 let shipDamage = (ship, coordinateGuess) => {
     ship.damage.push(coordinateGuess);
-    // console.log('user guessed',coordinateGuess,typeof coordinateGuess)
-    // for (let i=0;i<ship.locations.length;i++) {
-    //     console.log('checking location',ship.locations[i], typeof ship.locations[i])
-    //     if(ship.locations[i]==[coordinateGuess]) {console.log('it matches!');ship.damage.push(coordinateGuess);}
-    // }
-    // console.log('ship damage report',ship.damage)
 }
 
 let attackOpponent = (player, coordinateGuess) => {
@@ -30,8 +24,6 @@ let attackOpponent = (player, coordinateGuess) => {
         shipDamage(shipLocation, coordinateGuess)
     }
 }
-// let attackOpponent = (player, coordinateGuess) => (checkforShip(player, coordinateGuess)) ? shipDamage(player.ships[0], coordinateGuess) : null;
-
 
 module.exports.checkforShip = checkforShip;
 module.exports.shipDamage = shipDamage;
