@@ -1,42 +1,43 @@
-This article introduces the concepts of behavior driven development. Together we will configure a very basic test using the Chai framework.
+This article introduces the concepts of behavior driven development. Together we will configure a very basic Mocha test using the Chai framework.
 
 Basic Vocabulary
 As I first began to dive into this field, I noticed several closely related terms and tools which pop up frequently in reference material:
 
-Test Driven Development (TDD) - This is the approach of  developing tests prior to writing production-ready code. With this philosophy code begins with the minimal viable functions required to produce the intended output and refactoring occurs later.
+Test Driven Development (TDD) - This is the approach of  developing tests prior to writing production-ready code. With this philosophy code begins with the minimal viable functions required to produce the intended output and refactoring into production-ready code occurs later.
 
 Behavior Driven Development (BDD) - Combines the general techniques of TDD and uses natural language constructs (English-like sentences) to express the behavior and expected outcomes of tests.
 
-Mocha.js - A flexible Node.js based testing framework. Mocha is a popular choice for unit and integration testing in the console and the browser.
+Mocha.js - A flexible Node.js based testing framework. Mocha is a popular choice for unit and integration testing in the console and the browser. Learn More.
 
-Chai.js - A Mocha compatible assertion library, allowing for expect(), assert() and should-style assertions.
+Chai.js - A Mocha compatible assertion library, allowing for expect(), assert() and should-style assertions. Learn More.
 
 Setting Up
-Install both mocha and chai and add them into our package.json file.
-
+Install both Mocha and Chai and add them into our package.json file:
 npm install --save-dev mocha chai
-It may also be worth installing mocha globally.
-
+It may also be worth installing mocha globally:
 npm install --global mocha
-If performing npm init, set test command to mocha. Otherwise, manually add it to the scripts object in package.json. Also set our watch conditions to allow mocha to run tests whenever javascript files are in our root directory are modified.
- 
+If performing npm init, use this as an opportunity to set test command to mocha. Otherwise, manually add it to the scripts object in package.json. Also, set the watch condition to allow Mocha to run tests whenever files in our root directory are modified:
 "scripts": {
 "test": "mocha",
 "test:watch": "mocha --watch ./test ./"
 }
-With mocha set to the test trigger, we can now use the command to run all tests in test directory. With test:watch, we gain the ability for Mocha to automatically run our tests for us as soon as we save modify any file in our project.
+With Mocha set to the test trigger, we can now use the command npm run to run all tests in our test directory. With test:watch, we gain the ability for Mocha to automatically run our tests for us as soon as we save modify any file in our project.
 
-In our project root we'll create directory called `test`
+You may notice we don't yet have a test directory. We'll make one now in our project root:
 
-Here we'll make a new file called `core_tests.js`
+Inside that we'll make a new file called core_tests.js
 
 Testing 101
-Tests describe expected behavior without worrying how the function does it.
-each spec should be responsible for just one aspect of the code's behavior
+Tests describe expected behavior without worrying how the function does it. Each test is contained within a spec. A spec is...
+Each spec should be responsible for just one aspect of the code's behavior. Example:
+put a spec here
 
 Chai test suites
 
-A test suite is a block of unit tests that are closely related. typically test the same function or similar part of our codebase. Within a test suite are one or more individual unit tests, sometimes refers to as specs. These specs are accessed using mocha's describe() method.
+A test suite is a block of unit tests that are closely related. typically test the same function or similar part of our codebase.
+Example of tst suite
+Within a test suite are one or more individual unit tests, sometimes refers to as specs. These specs are accessed using mocha's describe() method.
+Example of spec and describe within
 
 In Mocha/chai, each test suite is encapsulated inside a describe() method call. describe() takes two arguments; a description string and an anonymous function. When used within the describe method, each spec should be wrapped in a method called it(), which also takes two arguments, one for a description of the intended behavior, and the second for a function continuing the state condition for the test.
 
