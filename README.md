@@ -12,7 +12,7 @@ In 2018 I will gain the skills of a full stack web developer. This will be an in
     * [Codewars](https://www.codewars.com)
     * [Arrow Functions pt 1](https://codeburst.io/javascript-arrow-functions-for-beginners-926947fc0cdc)
     * [Arrow Functions pt 2](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
-    * [Promises] (https://teamtreehouse.com/library/understanding-promises-in-javascript)
+    * [Promises](https://teamtreehouse.com/library/understanding-promises-in-javascript) & [Promises Pt. 2](https://classroom.udacity.com/courses/ud898)
 
 - [ ] **Learn Fundimentals of Software Testing**
     * Why: To scale my own software and to find my role in the industry
