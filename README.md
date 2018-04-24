@@ -9,7 +9,7 @@ In 2018 I will gain the skills of a full stack web developer. This will be an in
     * [ES6 crash course](https://www.udemy.com/es6-ecmascript-6-for-beginners/learn/v4/overview)
     * [JS Cheet Sheet & Roadmap](https://github.com/mbeaudru/modern-js-cheatsheet?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more)
     * [You don't know JS ebook](https://github.com/getify/You-Dont-Know-JS)
-    * [Codewars](https://www.codewars.com)
+    * [Codewars](https://www.codewars.com) & [Project Euler](https://projecteuler.net)
     * [Arrow Functions pt 1](https://codeburst.io/javascript-arrow-functions-for-beginners-926947fc0cdc)
     * [Arrow Functions pt 2](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
     * [Promises](https://teamtreehouse.com/library/understanding-promises-in-javascript) & [Promises Pt. 2](https://classroom.udacity.com/courses/ud898)
@@ -17,7 +17,7 @@ In 2018 I will gain the skills of a full stack web developer. This will be an in
 - [ ] **Learn Fundimentals of Software Testing**
     * Why: To scale my own software and to find my role in the industry
     * [Karma test runner](https://karma-runner.github.io)
-    * [JS testing with Mocha & Chai](https://teamtreehouse.com/library/javascript-unit-testing)
+    * [JS testing with Mocha & Chai](https://teamtreehouse.com/library/javascript-unit-testing) & [Best Pratices](http://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/)
     * learn about internal chettah
     * [enzyme: React testing utility](http://airbnb.io/enzyme/)
     * [Capybara: Ruby web acceptance framework](http://teamcapybara.github.io/capybara)
