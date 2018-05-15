@@ -112,3 +112,4 @@ In 2018 I will gain the skills of a full stack web developer. This will be an in
 - [ ] **Learn computer science concepts**
     * Why: To reach the next level in the industry, I owe it to myself to understand what's going on under the hood.
     * https://teachyourselfcs.com/
+    * MongoDB + Mongoose polish. [Intro](https://medium.freecodecamp.org/introduction-to-mongoose-for-mongodb-d2a7aa593c57), [Intro #2](https://code.tutsplus.com/articles/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527), [Intro #3](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose)
