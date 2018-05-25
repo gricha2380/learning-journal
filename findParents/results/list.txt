@@ -1,0 +1,65 @@
+parent: https://data.calgary.ca/api/views/873d-3sim     
+child: https://data.calgary.ca/api/views/ic67-rkd7
+
+parent: https://data.calgary.ca/api/views/3pvf-jc7s     
+child: https://data.calgary.ca/api/views/7tax-5vsg
+
+parent: https://data.calgary.ca/api/views/hy8d-xjzc     
+child: https://data.calgary.ca/api/views/xwq2-js5v
+
+parent: https://data.calgary.ca/api/views/pb2x-6irv     
+child: https://data.calgary.ca/api/views/vr9r-mchr
+
+parent: https://data.calgary.ca/api/views/ispg-b7uq     
+child: https://data.calgary.ca/api/views/94wb-umnh
+
+parent: https://data.calgary.ca/api/views/kp44-4n8q     
+child: https://data.calgary.ca/api/views/3u3x-hrc7
+
+parent: https://data.calgary.ca/api/views/yigb-2xmq     
+child: https://data.calgary.ca/api/views/jjqk-9b73
+
+parent: https://data.calgary.ca/api/views/mybc-x96b     
+child: https://data.calgary.ca/api/views/tqjs-vnhy
+
+parent: https://data.calgary.ca/api/views/icxc-6yk3     
+child: https://data.calgary.ca/api/views/szzc-mugz
+
+parent: https://data.calgary.ca/api/views/hx3y-g7b6     
+child: https://data.calgary.ca/api/views/4uie-p5fg
+
+parent: https://data.calgary.ca/api/views/5zep-bbjx     
+child: https://data.calgary.ca/api/views/e2ak-u5n7
+
+parent: https://data.calgary.ca/api/views/hfu7-u9j5     
+child: https://data.calgary.ca/api/views/89m2-urg9
+
+parent: https://data.calgary.ca/api/views/94m5-dznb     
+child: https://data.calgary.ca/api/views/qzsa-aeqp
+
+parent: https://data.calgary.ca/api/views/3cdm-qvkc     
+child: https://data.calgary.ca/api/views/b7du-6647
+
+parent: https://data.calgary.ca/api/views/kmts-cfkc     
+child: https://data.calgary.ca/api/views/avbp-2r3h
+
+parent: https://data.calgary.ca/api/views/idgy-87np     
+child: https://data.calgary.ca/api/views/qcug-xuqg
+
+parent: https://data.calgary.ca/api/views/jvt3-fp58     
+child: https://data.calgary.ca/api/views/cq6k-mmku
+
+parent: https://data.calgary.ca/api/views/2x64-b5gw     
+child: https://data.calgary.ca/api/views/w8v8-fsns
+
+parent: https://data.calgary.ca/api/views/g2mp-fupf     
+child: https://data.calgary.ca/api/views/gkju-5p9e
+
+parent: https://data.calgary.ca/api/views/ne8s-hkss     
+child: https://data.calgary.ca/api/views/m5bk-x5sf
+
+parent: https://data.calgary.ca/api/views/xrct-ap62     
+child: https://data.calgary.ca/api/views/enr4-crti
+
+parent: https://data.calgary.ca/api/views/gbpb-ymc5     
+child: https://data.calgary.ca/api/views/e844-wb5p
