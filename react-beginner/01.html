@@ -1,0 +1,59 @@
+<!-- hello world via vanilla JS. document.createElement -->
+<div id="root"></div>
+<script type="text/javascript">
+    const rootElement = document.querySelector("#root");
+    const element = document.createElement('div');
+    element.textContent = "Welcome, to Jurassic Park. (Vanilla JS)";
+    element.className="container";
+    rootElement.appendChild(element);
+</script>
+
+
+<!-- hello world via React (using createElement)
+React.createElement is just an  object with several properties including type and a children prop containing the element content
+
+     https://reactjs.org/docs/react-api.html#createelement
+
+        React.createElement(
+            type,
+            [props],
+            [...children]
+        )
+-->
+<div id="reactRoot"></div>
+<script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
+<script type="text/javascript">
+    const reactRoot = document.querySelector("#reactRoot");
+    const reactElement = React.createElement('div',{className:"container"},"Welcome, to Jurassic Park."," (React createElement)");
+    ReactDOM.render(reactElement, reactRoot);
+    console.log("What exactly is reactElement?", reactElement);
+</script>
+
+
+<!-- React JSX -->
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<div id="reactJSXRoot"></div>
+<script type="text/babel">
+    const reactJSXRoot = document.querySelector("#reactJSXRoot");
+    const reactJSXElement = React.createElement('div',{className:"container"},"Welcome, to Jurassic Park."," (React createElement JSX)");
+    ReactDOM.render(reactJSXElement, reactJSXRoot);
+    console.log("What exactly is reactJSXElement?", reactJSXElement);
+</script>
+
+
+<!-- React JSX structured
+using es6 spread operator and passing self closing element as shorthand into ReactDOM render
+-->
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<div id="rSJXRoot"></div>
+<script type="text/babel">
+    const props = {
+        className: "container",
+        children: ["Welcome to Jurassic Park.", " (React JSX structured)"]
+    }
+    const rSJXRoot = document.querySelector("#rSJXRoot");
+    const rSJXElement = <div {...props} />;
+    ReactDOM.render(rSJXElement, rSJXRoot);
+    console.log("What exactly is rSJXElement?", rSJXElement);
+</script>
