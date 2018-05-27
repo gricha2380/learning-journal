@@ -45,7 +45,6 @@ React.createElement is just an  object with several properties including type an
 <!-- React JSX structured
 using es6 spread operator and passing self closing element as shorthand into ReactDOM render
 -->
-<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
 <div id="rSJXRoot"></div>
 <script type="text/babel">
     const props = {
@@ -56,4 +55,114 @@ using es6 spread operator and passing self closing element as shorthand into Rea
     const rSJXElement = <div {...props} />;
     ReactDOM.render(rSJXElement, rSJXRoot);
     console.log("What exactly is rSJXElement?", rSJXElement);
+</script>
+
+<!-- React function call -->
+<div id="rSJXRootfn"></div>
+<script type="text/babel">
+    const rSJXRootfn = document.querySelector("#rSJXRootfn");
+    const message = (props) => <span>{props.msg}</span>;
+    const rSJXElementfn = <div>
+        {message({msg:"Welcome to Jurassic Park. "})}
+        {message({msg:"(React function)"})}
+        </div>;
+    ReactDOM.render(rSJXElementfn, rSJXRootfn);
+    console.log("What exactly is rSJXElementfn?", rSJXElementfn);
+</script>
+
+<!-- React function createElement -->
+<div id="rSJXRootfn2"></div>
+<script type="text/babel">
+    const rSJXRootfn2 = document.querySelector("#rSJXRootfn2");
+    const message = (props) => <span>{props.msg}</span>;
+    const rSJXElementfn2 = <div>
+        {message({msg:"Welcome to Jurassic Park. "})}
+        {message({msg:"(React createElement)"})}
+        </div>;
+    ReactDOM.render(rSJXElementfn2, rSJXRootfn2);
+    console.log("What exactly is rSJXElementfn2?", rSJXElementfn2);
+</script>
+
+<!-- React component 
+Message (capital letter is important) is used as a reusable component
+children can be passed as a normal property
+-->
+<div id="rSJXRootComp"></div>
+<script type="text/babel">
+    const rSJXRootComp = document.querySelector("#rSJXRootComp");
+    const Message = (props) => <span>{props.children}</span>;
+    const rSJXElementComp = (
+        <div className="container">
+        <Message children = "Welcome to Jurassic Park. " />
+        <Message children = "(React component)" />
+        </div>
+    );
+    ReactDOM.render(rSJXElementComp, rSJXRootComp);
+    console.log("What exactly is rSJXElementComp?", rSJXElementComp);
+</script>
+
+<!-- React component 
+Message (capital letter is important) is used as a reusable component
+props.children can be used as an inherent property
+
+to create a component that's reusable throughout the app, create a function with first character capitalized.
+That will receive props argument. props are attributes on user defined objects. Here we use it for .children
+
+https://reactjs.org/docs/components-and-props.html
+
+-->
+<div id="rSJXRootCompTwo"></div>
+<script type="text/babel">
+    const rSJXRootCompTwo = document.querySelector("#rSJXRootCompTwo");
+    const Message = (props) => <span>{props.children}</span>;
+    const rSJXElementCompTwo = (
+        <div className="container">
+        <Message>Welcome to Jurassic Park. </Message>
+        <Message>(React component inherent)</Message>
+        </div>
+    );
+    ReactDOM.render(rSJXElementCompTwo, rSJXRootCompTwo);
+    console.log("What exactly is rSJXElementCompTwo?", rSJXElementCompTwo);
+</script>
+
+<!-- basic custom props & reactDOM render
+
+-->
+<div id="reactFunctionProps"></div>
+<script type="text/babel">
+    const SayHello = (props) => {
+        return (
+            <div>
+                {props.firsPhrase} ({props.secondPhrase})
+            </div>
+        )
+    }
+    ReactDOM.render(
+        <SayHello firsPhrase={"Welcome to Jurassic Park"} secondPhrase={"React basic custom props"} />,
+        document.querySelector("#reactFunctionProps")
+    )
+</script>
+
+<!-- react prop types library
+unless otherwise specified, props are optional
+-->
+<script src="https://unpkg.com/prop-types@15.6.0/prop-types.js"></script>
+<div id="customProps"></div>
+<script type="text/babel">
+    const SayHello = (props) => {
+        return (
+            <div>
+                {props.firstPhrase} ({props.secondPhrase}) {props.thirdPhrase}
+            </div>
+        )
+    }
+    SayHello.propTypes = {
+        firstPhrase: PropTypes.string.isRequired,
+        secondPhrase: PropTypes.string.isRequired,
+        thirdPhrase: PropTypes.string
+    }
+    ReactDOM.render(
+        <SayHello firstPhrase={"Welcome to Jurassic Park"}  secondPhrase={"React custom prop - types import"} />,
+        document.querySelector("#customProps")
+    )
 </script>
