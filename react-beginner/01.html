@@ -1,3 +1,5 @@
+<!-- https://egghead.io/lessons/react-rerender-a-react-application -->
+
 <!-- hello world via vanilla JS. document.createElement -->
 <div id="root"></div>
 <script type="text/javascript">
@@ -156,6 +158,19 @@ unless otherwise specified, props are optional
             </div>
         )
     }
+
+    // this version imports a propTypes library from the React team. It performs the same basic functionality as the commented code below:
+    /*
+    const propTypes = {
+        string(props, propName, componentName) {
+            if (typeof props[propName] !== 'string') {
+                return new Error(`Please pass a string for ${propName} in ${componentName}. ${typeof props[propName]} was passsed instead.`);
+            }
+        }
+    }
+    */
+
+   // .isRequired does what you think 
     SayHello.propTypes = {
         firstPhrase: PropTypes.string.isRequired,
         secondPhrase: PropTypes.string.isRequired,
@@ -165,4 +180,38 @@ unless otherwise specified, props are optional
         <SayHello firstPhrase={"Welcome to Jurassic Park"}  secondPhrase={"React custom prop - types import"} />,
         document.querySelector("#customProps")
     )
+</script>
+
+
+<!-- Conditionally render a react component -->
+<div id="conditionalRender"></div>
+<script type="text/babel">
+// don't forget the {} to compile regular JS inside a JSX function
+    function Message ({message}) {
+        return (
+            <div>
+                {message ? (<div>{message}</div>) : (<div>No Message Found!!</div>)}
+            </div>
+        )
+    }
+    //if (!message) return <div>no message found!!</div>  // // same as: return React.createElement('div', null, 'no message found!!')
+    //return <div>{message}</div> // same as: return React.createElement('div', null, message)
+
+    // also same as: return (<div> {message ? React.createElement('div', null, message) : React.createElement('div', null, 'no message found!!')} </div>)
+    // note: curly braces must accept an expression, so if statemetns cannot be used directly. Turnaries are the best way to conditionally render a component.
+    
+    ReactDOM.render(
+        <Message message="Welcome to Jurassic Park... Conditionally rendered" />,
+        document.querySelector("#conditionalRender")
+    )
+</script>
+
+
+<!-- Render a react application -->
+<div id="renderedApp"></div>
+<script type="text/babel">
+    let root = document.querySelector("#renderedApp")
+    let time = new Date().toLocaleTimeString();
+    let renderedElement = <div>It is {time}</div>;
+    ReactDOM.render(renderedElement,root);
 </script>
