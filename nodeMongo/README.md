@@ -1,0 +1,1 @@
+Tip: Use express-generator to set up new express sites
