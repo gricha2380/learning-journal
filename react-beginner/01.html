@@ -86,7 +86,7 @@ using es6 spread operator and passing self closing element as shorthand into Rea
 </script>
 
 <!-- React component 
-Message (capital letter is important) is used as a reusable component
+Message (capital letter is important) is used as a reusable component. Would not work without capitalization.
 children can be passed as a normal property
 -->
 <div id="rSJXRootComp"></div>
@@ -207,11 +207,135 @@ unless otherwise specified, props are optional
 </script>
 
 
-<!-- Render a react application -->
-<div id="renderedApp"></div>
+<!-- Static time stamp -->
+<div id="staticTime"></div>
 <script type="text/babel">
-    let root = document.querySelector("#renderedApp")
+    let root = document.querySelector("#staticTime")
     let time = new Date().toLocaleTimeString();
     let renderedElement = <div>It is {time}</div>;
     ReactDOM.render(renderedElement,root);
+</script>
+
+<!-- Intrval time stamp basic Javascript-->
+<div id="renderedAppTwo"></div>
+<script type="text/babel">
+    let rootTwo = document.querySelector("#renderedAppTwo")
+    let timeTwo = () => {
+        let timeSlice = new Date().toLocaleTimeString();
+        let renderedElementTwo = `<div>It is ${timeSlice}</div>`;
+        rootTwo.innerHTML = renderedElementTwo; // this refreshes the entire DOM hiarchy when the value changes. As a result, the selected element would loose focus. No bueno
+    }
+    timeTwo();
+    setInterval(timeTwo, 1000)
+</script>
+
+<!-- Intrval time stamp via react-->
+<div id="renderedApp"></div>
+<script type="text/babel">
+    let root = document.querySelector("#renderedApp")
+    let time = () => {
+        let time = new Date().toLocaleTimeString();
+        let renderedElement = <div>It is {time}</div>;
+        ReactDOM.render(renderedElement,root); // this refreshes just the speecific element
+    }
+    time();
+    setInterval(time, 1000)
+</script>
+
+<!-- Directly styling an object -->
+<div id="style"></div>
+<script type="text/babel">
+    const styleElemet = (
+        <div>
+            {/*className instead of class. And styles are passed as objects*/}
+            <div className="box box--small" style={{paddingLeft: '20px'}}>React styling</div>
+        </div>
+    )
+    ReactDOM.render(styleElemet, style);
+</script>
+
+<!-- Styling an object with props -->
+<div id="styleTarget"></div>
+<script type="text/babel">
+    let styleProps = {
+        className:"box box-small third",
+        style: {paddingLeft: "20px"}
+    }
+    const styleObjectElement = (
+        <div>
+            <div {...styleProps} >React styling with props</div>
+        </div>
+    )
+    ReactDOM.render(styleObjectElement, styleTarget);
+</script>
+
+<!-- Styling an object with props function -->
+<div id="styleFunctionTarget"></div>
+<script type="text/babel">
+    let StyleBox = (props) => {
+        return (
+            <div 
+                className="box styleBox fromFunction"
+                style={{paddingLeft: '20px'}}
+                {...props}
+            />
+        )    
+    }
+    // Note, the props are handled as a shalow merge, so *all* styles will be overidded when props is present. E.G.: there's no padding
+    const styleElement = (
+        <div>
+            <StyleBox style={{backgroundColor: '#EEE',display:'inline-block'}}>React style function</StyleBox> 
+        </div>
+    )
+    ReactDOM.render(styleElement, styleFunctionTarget);
+</script>
+
+
+<!-- Styling an object with smarter props function -->
+<div id="styleSmartFunctionTarget"></div>
+<script type="text/babel">
+    // the benefit of style being an object is it can be parsed programatically and can utilize things like spread
+    // Note: className="" prevents it from returning undefined. It's easier & shorter than using if()
+    // note: For demonstration I'm adding and then removing blank spaces using .trim() I've never thought of that
+    let SmartStyleBox = ({style, className="", ...rest}) => {
+        return (
+            <div 
+                className={`holderClass ${className}  `.trim()}
+                style={{paddingLeft: '20px', ...style}}
+                {...rest}
+            />
+        )    
+    }
+    // This one uses spread operator to merge styles
+    const smartStyleElement = (
+        <div>
+            <SmartStyleBox className="box styleBox fromSmartFunction" style={{backgroundColor: '#EEE',display:'inline-block'}}>React smarter style function</SmartStyleBox>
+        </div>
+    )
+    ReactDOM.render(smartStyleElement, styleSmartFunctionTarget);
+</script>
+
+<!-- Styling an object with smarter props function and size control -->
+<div id="styleSmartFunctionAndSizeTarget"></div>
+<script type="text/babel">
+    // containing all style logic and size control inside function rather than on element
+    let SmartStyleBoxAndSize = ({style, className="", size, ...rest}) => {
+        const sizeClassName = size ? `box--${size}` : '';
+        return (
+            <div 
+                className={`holderClass ${className} ${sizeClassName} `.trim()}
+                style={{paddingLeft: '20px', ...style}}
+                {...rest}
+            />
+        )    
+    }
+    // This one uses spread operator to merge styles
+    const smartStyleSizeElement = (
+        <div>
+            <SmartStyleBoxAndSize size="small" className="box styleBox fromSmartFunction" style={{backgroundColor: '#EEE',display:'inline-block'}}>React smarter style size function</SmartStyleBoxAndSize>
+            <SmartStyleBoxAndSize size="medium" className="box styleBox fromSmartFunction" style={{backgroundColor: '#EEE',display:'inline-block'}}>React smarter style size function</SmartStyleBoxAndSize>
+            <SmartStyleBoxAndSize size="small" className="box styleBox fromSmartFunction" style={{backgroundColor: '#EEE',display:'inline-block'}}>React smarter style size function</SmartStyleBoxAndSize>    
+        </div>
+    )
+    ReactDOM.render(smartStyleSizeElement, styleSmartFunctionAndSizeTarget);
 </script>
