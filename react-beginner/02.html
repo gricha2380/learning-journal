@@ -35,3 +35,43 @@
     }
     renderApp()
 </script>
+
+<hr>
+<!-- Fancier Event handler in react -->
+<div id="eventTarget"></div>
+<script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<script type="text/babel">
+    
+    const stateFancy = {"eventCount": 0, usernameFancy: ''}
+    function App() {
+        return (
+            <div>
+                <p>There have been {stateFancy.eventCount} events</p>
+                <p><button onClick={incrimentFancy}>press me too</button></p>
+                <p>You typed: {state.usernameFancy}</p>
+                <p><input onChange={event => setStateFancy({usernameFancy: event.target.value})} /></p>
+            </div>
+        )
+    }
+
+    function incrimentFancy (){
+        setStateFancy({
+            "eventCount": stateFancy.eventCount+1
+        })
+    }
+
+    function setStateFancy(newState) {
+        Object.assign(stateFancy, newState)
+        renderAppFancy()
+    }
+
+    function renderAppFancy(){
+        ReactDOM.render(
+            <App />,
+            document.querySelector('#eventTarget')
+        )
+    }
+    renderAppFancy()
+</script>
