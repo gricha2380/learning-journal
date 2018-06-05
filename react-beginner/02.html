@@ -45,33 +45,61 @@
 <script type="text/babel">
     
     const stateFancy = {"eventCount": 0, usernameFancy: ''}
-    function App() {
+    function AppFancy() {
         return (
             <div>
                 <p>There have been {stateFancy.eventCount} events</p>
                 <p><button onClick={incrimentFancy}>press me too</button></p>
-                <p>You typed: {state.usernameFancy}</p>
+                <p>You typed: {stateFancy.usernameFancy}</p>
                 <p><input onChange={event => setStateFancy({usernameFancy: event.target.value})} /></p>
+                <p><input onChange={updateUsername} /></p>
             </div>
         )
     }
 
+    function updateUsername (event) {
+        console.log(event)
+        // console.log(event.nativeEvent)
+        setStateFancy({usernameFancy: event.target.value})
+    }
     function incrimentFancy (){
         setStateFancy({
             "eventCount": stateFancy.eventCount+1
         })
     }
 
-    function setStateFancy(newState) {
-        Object.assign(stateFancy, newState)
+    function setStateFancy(newStateFancy) {
+        Object.assign(stateFancy, newStateFancy)
         renderAppFancy()
     }
 
     function renderAppFancy(){
         ReactDOM.render(
-            <App />,
+            <AppFancy />,
             document.querySelector('#eventTarget')
         )
     }
     renderAppFancy()
+</script>
+
+<hr>
+<!-- Using component state -->
+<div id="componentStateTarget"></div>
+<script type="text/babel">
+console.log('hello')
+    function StopWatch(){
+        return (
+            <div>
+                <label>0ms</label>
+                <button>Start</button>
+                <button>Clear</button>
+            </div>
+        )
+    }
+    const componentElement = <StopWatch />
+    ReactDOM.render(
+        componentElement,
+        document.querySelector("#componentStateTarget")
+    )
+
 </script>
