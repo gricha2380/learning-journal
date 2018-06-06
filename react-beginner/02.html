@@ -83,23 +83,83 @@
 </script>
 
 <hr>
-<!-- Using component state -->
+
+<!-- Using component state hard coded props-->
 <div id="componentStateTarget"></div>
 <script type="text/babel">
-console.log('hello')
-    function StopWatch(){
+class StopWatch extends React.Component{
+    state = {lapse: 0, running: false}
+    render(){
+        const {lapse, running} = this.props;
         return (
             <div>
-                <label>0ms</label>
-                <button>Start</button>
+                <label>{lapse}ms</label>
+                <button>{running ? 'Stop' : 'Start'}</button>
                 <button>Clear</button>
             </div>
         )
     }
-    const componentElement = <StopWatch />
+}
+    console.log('hello')
+    function StopWatch({lapse, running}){
+        
+    }
+    const componentElement = <StopWatch running={true} lapse={22} />
     ReactDOM.render(
         componentElement,
         document.querySelector("#componentStateTarget")
+    )
+
+</script>
+
+<hr>
+
+<!-- Using component state dynamic props-->
+<div id="dynamicComponentStateTarget"></div>
+<script type="text/babel">
+class DynamicStopWatch extends React.Component{
+    state = {dynamicLapse: 244, dynamicRunning: false}
+    handleRunClick = ()=> {
+        // console.log("Yes you clicked")
+        const startTime = Date.now() - this.state.dynamicLapse;
+        console.log(startTime,"starTime");
+        this.setState(state => {
+            if (state.dynamicRunning) {
+                clearInterval(this.timer)
+            } else {
+                this.timer = setInterval(()=>{
+                    this.setState({dynamicLapse: Date.now() - startTime})
+                })
+            }
+            return {dynamicRunning: !state.dynamicRunning}
+        })
+        // this.setState({dynamicRunning: true})
+        // this.setState({dynamicLapse: state.dynamicLapse + 1, dynamicRunning: true})
+    }
+    handleClearClick = ()=> {
+        console.log("clear was pressed")
+        clearInterval(this.timer)
+        this.setState({dynamicLapse: 0, dynamicRunning: false})
+    }
+    render(){
+        const {dynamicLapse, dynamicRunning} = this.state;
+        return (
+            <div>
+                <label>{dynamicLapse}ms</label>
+                <button onClick={this.handleRunClick}>{dynamicRunning ? 'Stop' : 'Start'}</button>
+                <button onClick={this.handleClearClick}>Clear</button>
+            </div>
+        )
+    }
+}
+    console.log('hello')
+    function DynamicStopWatch({dynamicLapse, dynamicRunning}){
+        
+    }
+    const componentElement = <DynamicStopWatch />
+    ReactDOM.render(
+        componentElement,
+        document.querySelector("#dynamicComponentStateTarget")
     )
 
 </script>
