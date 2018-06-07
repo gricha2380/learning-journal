@@ -129,7 +129,7 @@ class DynamicStopWatch extends React.Component{
             } else {
                 this.timer = setInterval(()=>{
                     this.setState({dynamicLapse: Date.now() - startTime})
-                })
+                }, ()=>{console.log(this.state.dynamicLapse)})
             }
             return {dynamicRunning: !state.dynamicRunning}
         })
@@ -141,6 +141,11 @@ class DynamicStopWatch extends React.Component{
         clearInterval(this.timer)
         this.setState({dynamicLapse: 0, dynamicRunning: false})
     }
+
+    componentWillUnmount() {
+        clearInterval(this.timer)
+    }
+
     render(){
         const {dynamicLapse, dynamicRunning} = this.state;
         return (
