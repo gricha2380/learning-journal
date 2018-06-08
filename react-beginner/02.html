@@ -166,5 +166,53 @@ class DynamicStopWatch extends React.Component{
         componentElement,
         document.querySelector("#dynamicComponentStateTarget")
     )
-
 </script>
+
+<hr>
+<!-- Basic Class component in React. Update button count on click -->
+<div id="classComponentTarget"></div>
+<script type="text/babel">
+    class Counter extends React.Component {
+        constructor(...args) {
+            super(...args)
+            this.state = {count: 0}
+        }
+        render() {
+            return (
+                <button onClick={()=>
+                    this.setState(({count}) =>({
+                        count: count + 1
+                    }))}>
+                    {this.state.count}   
+                </button>
+            )
+        }
+    }    
+    const classComponentElement = <Counter />
+    ReactDOM.render(classComponentElement, document.querySelector("#classComponentTarget"))
+</script>
+
+<hr>
+<!-- Fancier Class component in React. Update button count on click -->
+<div id="fancierClassComponentTarget"></div>
+<script type="text/babel">
+    class FancierCounter extends React.Component {
+        constructor(...args) {
+            super(...args)
+            this.state = {count: 0}
+        }
+        handleClick(){
+            this.setState(({count}) => ({count: count + 1}))
+        }
+        render() {
+            return (
+                <button onClick={this.handleClick.bind(this)}>
+                    {this.state.count}   
+                </button>
+            )
+        }
+    }    
+    const FancierClassComponentElement = <FancierCounter />
+    ReactDOM.render(FancierClassComponentElement, document.querySelector("#fancierClassComponentTarget"))
+</script>
+
