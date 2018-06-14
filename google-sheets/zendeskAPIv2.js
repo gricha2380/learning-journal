@@ -7,13 +7,30 @@ function onOpen() {
     var entries = [{
     name : "Fetch Ticket Metrics",
     functionName : "findView"
-    }];
+    },
+     {name: "Instructions",
+     functionName : "instructions"
+     }];
     sheet.addMenu("Zendesk", entries);
-    //findView() //run automatically
+    // run automatically if spreadsheet is opened. 
+    //findView()
   };
   
+  function instructions(){
+    showURL("URL")
+  }
+  
+  function showURL(href){
+    var app = UiApp.createApplication().setHeight(50).setWidth(200);
+    app.setTitle("Open Link");
+    var link = app.createAnchor('Zendesk Stats Instructions', href).setId("link");
+    app.add(link);  
+    var doc = SpreadsheetApp.getActive();
+    doc.show(app);
+   }
+  
   // This function GETs data from the Zendesk API using the parameters specified
-  function getAPIdata(URL, apiAuth) {
+  function getAPIdata(URL, apiAuth, notFirst) {
     Logger.log("URL is..");
     Logger.log(URL);
    
@@ -24,23 +41,78 @@ function onOpen() {
     headers: {"Authorization": apiAuth}
     });
     
+    // Logger.log("Response=" + response);
+    if (notFirst) {
+        Logger.log("Response Code = " + response.getResponseCode());
+    }
+    
     // Get our view data
     var apiData = response.getContentText();
+    if (notFirst) {
+      // Logger.log("apiData=" + apiData);
+    }
+    
     
     // Convert that view data to a JSON object
-    var apiObject = Utilities.jsonParse(apiData);
+    
+    var apiObject = JSON.parse(apiData);
+    
+    
     
     return apiObject;
   }
   
+  
+  
   // Zendesk ID for the desired ticket view
   function findView() {
-    getMetrics("360030826634");
+    getMetrics("000");
   }
+  
   
   /* ========================================================================
      Send cridentials to getAPIdata function & process additional ticket data
   ======================================================================== */
+  
+  function callApiAndParseData(url, auth) {
+    var new_rows = []
+    var new_orgs = {}
+    var new_users = {}
+    var response = getAPIdata(url, auth);
+    var nextFlag = false;
+    if (response.next_page) {
+      nextFlag = true;
+    }
+    Logger.log("First call succeeded");
+    Logger.log("nextFlag=" + nextFlag);
+    new_rows = new_rows.concat(response.rows);
+    for (var i = 0; i < response.organizations.length; i++) {
+      new_orgs[response.organizations[i].id] = response.organizations[i].name
+    }
+    for (var j = 0; j < response.users.length; j++) {
+      new_users[response.users[j].id] = response.users[j].name
+    }
+    // nextFlag = response.next_page ? true : false;
+    while (nextFlag) {
+      response = getAPIdata(response.next_page, auth, true);
+      Logger.log("In while loop - call succeeded");
+      if (!response.next_page) {
+        nextFlag = false;
+      }
+      Logger.log("nextFlag=" + nextFlag);
+      new_rows = new_rows.concat(response.rows);
+      for (var i = 0; i<response.organizations.length; i++) {
+     
+        new_orgs[response.organizations[i].id] = response.organizations[i].name
+      }
+      for (var j = 0; j < response.users.length; j++) {
+        Logger.log(response.users[i]);
+        Logger.log(i);
+        new_users[response.users[j].id] = response.users[j].name
+      }
+    }
+    return {'rows': new_rows, 'organizations': new_orgs, 'users': new_users}
+  }
   
   function getMetrics(viewID) {
     
@@ -59,78 +131,45 @@ function onOpen() {
     var zendeskURL = null; // Your Zendesk URL goes here
     
     // Grab our data via the API
-    var viewObject = getAPIdata(zendeskURL+"/api/v2/views/" + viewID + "/execute.json", digestfull);
+    // var viewObject = getAPIdata(zendeskURL+"/api/v2/views/" + viewID + "/execute.json", digestfull);
+    var viewObject = callApiAndParseData(zendeskURL+"/api/v2/views/" + viewID + "/execute.json", digestfull);
     
     // Isolate the users object so we can map assignee ID to assignee name
-    var viewUsersObject = viewObject.users;
+    // var viewUsersObject = viewObject.users;
     //Logger.log("User object contents");
     //Logger.log(viewUsersObject);
-    
-    // Iterate through each record in the users object and build a lookup object so we can map assignee ID to name
-    var userLookup = {};
-    for (var j in viewUsersObject) {
-      userLookup[viewUsersObject[j].id] = viewUsersObject[j].name;
-    }
+   
     
     // Isolate the rows object
     var viewTicketObject = viewObject.rows;
+    
+    
+    
     
     // Let's create an array which will contain all the data we're going to dump into the spreadsheet
     var dataTable = new Array();
     
     // Iterate through each record in the API object and output select data to the logs
     for (var i in viewTicketObject) {
+      var ticketID = viewTicketObject[i].ticket.id
       //Logger.log("ticket data");
       //Logger.log(viewTicketObject[i])
       
       // Get each of our properties for this ticket
       var satisfaction = viewTicketObject[i].satisfaction_score;
       var requested=viewTicketObject[i].created;
-      if (viewTicketObject[i].custom_fields[1])   {var productArea=viewTicketObject[i].custom_fields[1].name;}
-      if (viewTicketObject[i].custom_fields[0])   {var trelloCard=viewTicketObject[i].custom_fields[0].value;}
-      var priority=viewTicketObject[i].priority;
-      var organization=viewTicketObject[i].organization_id;
-      if (viewTicketObject[i].solved)
-      {
-       var solved=viewTicketObject[i].solved.replace("T", " ").replace("Z", "");
-  //      var solved = viewTicketObject[i].solved;
-    //    var solved = Utilities.formatDate(new Date(),"GMT","yyyy-MM-dd'T'HH:mm:ss'Z'")
-        
-      }
-      var type=viewTicketObject[i].type;
-      
-      var ticketID = viewTicketObject[i].ticket.id;
-    var ticketRequesterUpdate = viewTicketObject[i].created.replace("T", " ").replace("Z", "");
-  //    var ticketRequesterUpdate = viewTicketObject[i].created;
-    //  var ticketRequesterUpdate = Utilities.formatDate(new Date(),"UTC","yyyy-MM-dd'T'HH:mm:ss'Z'")
-      var ticketAssigneeID = viewTicketObject[i].assignee_id;
-      var ticketAssigneeName = userLookup[ticketAssigneeID];
-      
-      // Get the ticket data for each record via another API request
-      var ticketDetails = getAPIdata(zendeskURL+"/api/v2/tickets/" + ticketID + ".json", digestfull);
-      
-      // Grab the satisfaction comment for this ticket
-      var ticketSatisfactionComment = ticketDetails.ticket.satisfaction_rating.comment;
-      var ticketSubject = ticketDetails.ticket.subject;
-      
-      // Find org name from ID
-      for (var x = 0;x<viewObject.organizations.length;x++){
-        if (viewObject.organizations[x].id === organization){
-          var orgName = viewObject.organizations[x].name;
-        }
-      }
-      // Construct the current row of data for this ticket as an array and then push to our parent array
-      var currentRow = [solved, '=hyperlink("URL' + ticketID + '", ' + ticketID + ")", ticketAssigneeName, ticketSubject, productArea, orgName, type, trelloCard];
-      dataTable.push(currentRow);
-    }
-    
-    // Check for pagination and pull all available pages
-    if (viewObject.next_page) {
-      Logger.log("next page found");
-      Logger.log(viewObject.next_page);    
-      //var newObj = getAPIdata(viewObject.next_page, digestfull); 
-      //Logger.log("New object");
-      //Logger.log(newObj);
+      var reasonCode=viewTicketObject[i].priority;
+      dataTable.push([
+        viewTicketObject[i].solved.replace("T", " ").replace("Z", ""), // solved
+        '=hyperlink("URL/' + ticketID + '", ' + ticketID + ")", // ticket id
+        viewObject.users[viewTicketObject[i].assignee_id], // asignee name
+        viewTicketObject[i].ticket.subject, // ticket subject
+        viewTicketObject[i].custom_fields[2] ? viewTicketObject[i].custom_fields[2].name : "", //reason code                   
+        viewTicketObject[i].custom_fields[3] ? viewTicketObject[i].custom_fields[3].name : "", //product area
+        viewObject.organizations[viewTicketObject[i].organization_id], // organization name
+        viewTicketObject[i].custom_fields[0] ? viewTicketObject[i].custom_fields[0].value : "", // type
+        viewTicketObject[i].custom_fields[1] ? viewTicketObject[i].custom_fields[1].value : "" // trello card
+     ]);
     }
      
     /* ========================================================================
@@ -143,7 +182,7 @@ function onOpen() {
     Logger.log(rowCount);
     //template_sheet.deleteRows(2, rowCount);
   //  template_sheet.getRange(2, 1, rowCount).clearContent();
-    template_sheet.getRange('A2:Z999').clearContent();
+    template_sheet.getRange('A2:Z9999').clearContent();
     
     // Count the number of records in the table of data so we know how many rows to add
     var number_of_records = dataTable.length;
@@ -155,7 +194,7 @@ function onOpen() {
     
       
     // Set the values for range A1:D2 to the values in an array.
-    template_sheet.getRange(2, 1, number_of_records, currentRow.length).setValues(dataTable);
+    template_sheet.getRange(2, 1, number_of_records, 9).setValues(dataTable);
     template_sheet.getRange("A1").setNumberFormat('MM/dd/yyyy');
   
   }
